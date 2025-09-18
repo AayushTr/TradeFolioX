@@ -1,2 +1,0 @@
-# TradeFolioX
-trading web application 
