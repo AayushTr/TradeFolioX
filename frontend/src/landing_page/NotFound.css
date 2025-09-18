@@ -1,0 +1,66 @@
+/* NotFound.css */
+.notfound-page {
+  padding: 80px 20px;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tf-text);
+  background: transparent;
+}
+
+.notfound-container {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--tf-surface);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: var(--tf-shadow);
+  border: 1px solid rgba(17,24,39,0.04);
+}
+
+.nf-code {
+  font-size: 4.4rem;
+  margin: 0;
+  color: var(--tf-primary);
+}
+
+.nf-title {
+  font-size: 1.6rem;
+  margin: 8px 0 6px 0;
+}
+
+.nf-sub {
+  color: var(--tf-muted);
+  margin-bottom: 18px;
+  font-size: 1rem;
+}
+
+.nf-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Buttons reuse btn classes if present, otherwise simple ones */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--tf-primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 22px rgba(13,148,136,0.12);
+}
+.btn-primary:hover { background: var(--tf-secondary); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--tf-text);
+  border: 1px solid rgba(17,24,39,0.06);
+}

@@ -1,0 +1,69 @@
+/* Modal.css */
+.tf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 14, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.tf-modal {
+  width: 100%;
+  max-width: 680px;
+  background: var(--tf-surface);
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(17,24,39,0.35);
+  overflow: hidden;
+}
+
+.tf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(17,24,39,0.04);
+}
+
+.tf-modal-title {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--tf-text);
+}
+
+.tf-modal-close {
+  background: transparent;
+  border: 0;
+  font-size: 1.125rem;
+  cursor: pointer;
+  color: var(--tf-muted);
+}
+
+.tf-modal-body {
+  padding: 18px 20px;
+  color: var(--tf-text);
+  line-height: 1.5;
+}
+
+.tf-modal-footer {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(17,24,39,0.04);
+  text-align: right;
+}
+
+/* small button styles used */
+.tf-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tf-btn-secondary {
+  background: var(--tf-primary);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(13,148,136,0.12);
+}

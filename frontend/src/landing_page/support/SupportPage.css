@@ -1,0 +1,91 @@
+/* Support Page Styles */
+
+.support-page {
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+  padding: 2rem;
+}
+
+.support-hero {
+  text-align: left;
+  padding: 3rem 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+}
+
+.support-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0D9488; /* teal */
+  margin-bottom: 0.5rem;
+}
+
+.support-content p {
+  font-size: 1rem;
+  color: #374151; /* neutral gray text */
+  margin-bottom: 1.5rem;
+}
+
+.support-search {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.support-search:focus {
+  border-color: #0D9488;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-links a {
+  background: #0D9488; /* teal */
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.quick-links a:hover {
+  background: #F59E0B; /* amber on hover */
+  color: #111827;
+}
+
+.ticket-section {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ticket-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0D9488;
+  margin-bottom: 0.5rem;
+}
+
+.ticket-section p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}

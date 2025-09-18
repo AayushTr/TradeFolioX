@@ -1,0 +1,61 @@
+/* Wrapper */
+.create-ticket {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Heading */
+.create-ticket h2 {
+  color: #0D9488;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.create-ticket p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* Status message */
+.ticket-status {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #f0fdfa;
+  border: 1px solid #0D9488;
+  color: #0D9488;
+}
+
+/* Form layout */
+.ticket-form {
+  display: grid;
+  gap: 16px;
+}
+
+/* Input + select + textarea */
+.ticket-input,
+.ticket-select,
+.ticket-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Button */
+.ticket-btn {
+  background: #0D9488;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ticket-btn:hover {
+  background: #F59E0B;
+}

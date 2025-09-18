@@ -1,0 +1,61 @@
+/* OpenAccount.css */
+.openaccount-section {
+  background: linear-gradient(180deg, var(--tf-bg, #F9FAFB), #ffffff 30%);
+  padding: 48px 0;
+  color: var(--tf-text);
+}
+
+.openaccount-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.openaccount-left {
+  flex: 1 1 420px;
+  min-width: 260px;
+}
+
+.openaccount-right {
+  flex: 1 1 420px;
+  min-width: 260px;
+  text-align: center;
+}
+
+.openaccount-sub {
+  color: var(--tf-muted);
+  margin-bottom: 20px;
+  font-size: 1.03rem;
+}
+
+/* CTA */
+.openaccount-cta {
+  display: inline-block;
+  background: var(--tf-primary);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(13,148,136,0.12);
+  transition: background var(--tf-transition);
+}
+.openaccount-cta:hover { background: var(--tf-secondary); }
+
+/* illustration */
+.openaccount-illu {
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: var(--tf-shadow);
+}
+
+/* responsive */
+@media (max-width: 880px) {
+  .openaccount-container { flex-direction: column; text-align: center; }
+  .openaccount-right { margin-top: 12px; }
+}

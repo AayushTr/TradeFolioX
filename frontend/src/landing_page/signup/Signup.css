@@ -1,0 +1,131 @@
+/* Signup.css - TradeFoliox auth styles */
+:root{
+  --tf-primary: #0D9488;
+  --tf-secondary: #F59E0B;
+  --tf-text: #111827;
+  --tf-muted: #6B7280;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 30px rgba(17,24,39,0.06);
+}
+
+.auth-page {
+  padding: 48px 20px;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fbfdfe, #ffffff 40%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(17,24,39,0.04);
+}
+
+.auth-title {
+  margin: 0 0 6px 0;
+  color: var(--tf-text);
+  font-size: 1.6rem;
+}
+
+.auth-sub {
+  margin: 0 0 18px 0;
+  color: var(--tf-muted);
+  font-size: 0.98rem;
+}
+
+.auth-form { display: grid; gap: 12px; }
+
+.auth-error {
+  background: #fff6f6;
+  color: #b91c1c;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(185,28,28,0.08);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.auth-success {
+  background: #f0fdf4;
+  color: #065f46;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(6,95,70,0.06);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.field { display: block; }
+.field-label { display: block; font-size: 0.86rem; color: var(--tf-muted); margin-bottom: 6px; }
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  font-size: 1rem;
+  color: var(--tf-text);
+  outline: none;
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 120ms ease;
+  background: #fff;
+  -webkit-appearance: none;
+}
+
+.input:focus {
+  border-color: var(--tf-primary);
+  box-shadow: 0 6px 20px rgba(13,148,136,0.12);
+  transform: translateY(-1px);
+}
+
+.form-row { margin-top: 6px; display: flex; justify-content: flex-start; gap: 12px; align-items: center; }
+
+.btn-primary{
+  background: var(--tf-primary);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(13,148,136,0.12);
+  transition: background 180ms ease, transform 120ms ease;
+}
+
+.btn-primary:hover {
+  background: var(--tf-secondary);
+  transform: translateY(-2px);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+.auth-footer {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--tf-muted);
+  font-size: 0.95rem;
+}
+
+.link-inline {
+  color: var(--tf-primary);
+  margin-left: 6px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.link-inline:hover { color: var(--tf-secondary); text-decoration: underline; }
+
+/* small screens */
+@media (max-width: 520px) {
+  .auth-card { padding: 18px; border-radius: 10px; }
+  .auth-title { font-size: 1.3rem; }
+}

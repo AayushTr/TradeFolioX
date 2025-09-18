@@ -1,0 +1,51 @@
+/* Stats.css */
+.stats-section {
+  background: transparent;
+  padding: 48px 0;
+  color: var(--tf-text);
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.tf-card {
+  background: var(--tf-surface);
+  border-radius: var(--tf-radius);
+  box-shadow: var(--tf-shadow);
+  padding: 28px;
+  border: 1px solid rgba(17,24,39,0.06);
+  transition: transform var(--tf-transition), box-shadow var(--tf-transition);
+}
+
+.tf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(17,24,39,0.08);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.accent-teal {
+  color: var(--tf-primary);   /* #0D9488 */
+}
+
+.accent-amber {
+  color: var(--tf-secondary); /* #F59E0B */
+}
+
+.stat-sub {
+  color: var(--tf-muted);
+  font-size: 0.95rem;
+}

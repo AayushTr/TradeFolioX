@@ -1,0 +1,8 @@
+/* Login.css - reuse same variables as Signup.css */
+@import "./Signup.css";
+
+/* If you want a small override for login-only spacing, do it here.
+   Otherwise Login will inherit the same styles from Signup.css because of import above. */
+
+/* Example: make the title slightly different */
+.auth-card .auth-title { margin-bottom: 4px; }

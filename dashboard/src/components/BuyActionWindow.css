@@ -1,0 +1,136 @@
+/* ----------------- Buy/Trade modal centering & overlay -----------------
+   Add into: src/components/BuyActionWindow.css
+   (Or append to src/index.css if you don't have the component CSS file)
+   This only affects styling/positioning — no JS logic changes.
+-------------------------------------------------------------------------*/
+
+/* full-screen overlay behind modal (semi-opaque) */
+.buy-action-overlay,
+.buy-modal-overlay,
+.buy-overlay {
+  position: fixed !important;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0,0,0,0.18);
+  z-index: 9997;
+}
+
+/* the modal / panel itself (centered) */
+.buy-action-window,
+.buy-modal,
+.buy-action-panel,
+.buy-window,
+.buy-panel {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+  width: 380px;                 /* desktop default width */
+  max-width: calc(100% - 48px); /* keep spacing on small screens */
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(14,30,37,0.14);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* header row (title + close button) */
+.buy-action-window .modal-header,
+.buy-modal .modal-header,
+.buy-window .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+/* small tweak: keep close button visible and larger tap target */
+.buy-action-window .close-btn,
+.buy-modal .close-btn,
+.buy-window .close-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+/* buttons inside modal follow your brand color (teal + amber accents) */
+.buy-action-window .btn-buy,
+.buy-modal .btn-buy,
+.buy-action-panel .btn-buy {
+  background: #0D9488;   /* TradeFoliox primary teal */
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.buy-action-window .btn-cancel,
+.buy-modal .btn-cancel {
+  background: #F1F2F4;
+  color: #111;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* secondary (sell) button uses amber */
+.buy-action-window .btn-sell,
+.buy-modal .btn-sell { 
+  background: #F59E0B; /* amber accent */
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* make sure inputs are full width inside modal */
+.buy-action-window input[type="text"],
+.buy-action-window input[type="number"],
+.buy-modal input[type="text"],
+.buy-modal input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* small responsive rules */
+@media (max-width: 520px) {
+  .buy-action-window,
+  .buy-modal,
+  .buy-window {
+    width: calc(100% - 28px);
+    padding: 12px;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Safety: override old top/right absolute styles that might be applied
+   to specific selectors used in your previous CSS/JS (keeps the panel centered). */
+[style*="position: absolute"][class*="buy"],
+[style*="position: absolute"][id*="buy"] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+}
+
+/* ----------------- end buy modal CSS ----------------- */

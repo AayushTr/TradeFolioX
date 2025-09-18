@@ -1,0 +1,114 @@
+/* Testimonials.css */
+.testimonials-section {
+  background: transparent;
+  padding: 48px 0;
+  color: var(--tf-text);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.testimonials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.testimonials-title {
+  font-size: 1.6rem;
+  margin: 0;
+  color: var(--tf-text);
+}
+
+.testimonials-sub {
+  color: var(--tf-muted);
+  font-size: 0.95rem;
+}
+
+/* grid */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* card */
+.testimonial-card {
+  background: var(--tf-surface);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--tf-shadow);
+  border: 1px solid rgba(17,24,39,0.04);
+  transition: transform var(--tf-transition), box-shadow var(--tf-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(17,24,39,0.08);
+}
+
+.testimonial-quote {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--tf-text);
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.testimonial-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+
+.testimonial-name {
+  font-weight: 700;
+  color: var(--tf-text);
+  font-size: 0.98rem;
+  margin-bottom: 2px;
+}
+
+.testimonial-role {
+  font-size: 0.9rem;
+  color: var(--tf-muted);
+}
+
+/* star row */
+.testimonial-stars {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* single star style (using inline SVG or emoji) */
+.star {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  color: var(--tf-secondary);
+}
+
+/* responsive */
+@media (max-width: 1000px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

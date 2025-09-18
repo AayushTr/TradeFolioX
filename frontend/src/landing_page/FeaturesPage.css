@@ -1,0 +1,59 @@
+/* FeaturesPage.css */
+.page {
+  padding: 56px 20px;
+  color: var(--tf-text);
+}
+
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.page-sub {
+  font-size: 1.05rem;
+  color: var(--tf-muted);
+  margin-bottom: 32px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--tf-surface);
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--tf-shadow);
+  transition: transform var(--tf-transition), box-shadow var(--tf-transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(17,24,39,0.08);
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  color: var(--tf-muted);
+  font-size: 1rem;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+/* ContactPage.css */
+.page {
+  padding: 56px 20px;
+  color: var(--tf-text);
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--tf-text);
+}
+
+.page-sub {
+  font-size: 1.05rem;
+  color: var(--tf-muted);
+  margin-bottom: 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+input, textarea {
+  border: 1px solid rgba(17,24,39,0.1);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--tf-surface);
+  color: var(--tf-text);
+}
+
+.btn-primary {
+  background: var(--tf-primary);
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--tf-transition);
+}
+
+.btn-primary:hover {
+  background: var(--tf-secondary);
+}

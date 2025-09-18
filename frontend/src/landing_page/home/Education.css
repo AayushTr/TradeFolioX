@@ -1,0 +1,90 @@
+/* Education.css */
+.education-section {
+  background: transparent;
+  padding: 56px 0;
+  color: var(--tf-text);
+}
+
+.education-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.education-row {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* left: illustration */
+.education-left {
+  flex: 1 1 420px;
+  min-width: 260px;
+  text-align: center;
+}
+
+.education-illustration {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--tf-shadow);
+  display: inline-block;
+}
+
+/* right: text */
+.education-right {
+  flex: 1 1 480px;
+  min-width: 280px;
+}
+
+.education-h2 {
+  font-size: 1.8rem;
+  margin: 0 0 12px;
+  color: var(--tf-text);
+}
+
+.education-sub {
+  color: var(--tf-muted);
+  font-size: 1.03rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.education-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.education-link {
+  color: var(--tf-primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  transition: color var(--tf-transition), transform var(--tf-transition);
+}
+
+.education-link:hover {
+  color: var(--tf-secondary);
+  transform: translateY(-2px);
+}
+
+/* helper for smaller notes */
+.education-note {
+  margin-top: 12px;
+  color: var(--tf-muted);
+  font-size: 0.95rem;
+}
+
+/* responsive */
+@media (max-width: 920px) {
+  .education-row { gap: 20px; }
+}
+@media (max-width: 640px) {
+  .education-row { flex-direction: column; text-align: center; }
+  .education-left, .education-right { width: 100%; }
+}

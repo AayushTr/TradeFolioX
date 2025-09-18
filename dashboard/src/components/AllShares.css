@@ -1,0 +1,222 @@
+/* AllShares.css — updated TradeFoliox theme (replace file contents) */
+
+/* Theme vars */
+:root {
+  --tf-teal: #0D9488;
+  --tf-teal-dark: #0b7b6d;
+  --tf-amber: #F59E0B;
+  --tf-amber-dark: #d97706;
+  --tf-bg: #F9FAFB;
+  --tf-text: #111827;
+  --tf-muted: #6B7280;
+  --card-border: #e9edf2;
+  --card-shadow: 0 8px 20px rgba(14,30,37,0.06);
+}
+
+/* Container */
+.allshares { 
+  box-sizing: border-box; 
+  padding-left: 24px;   /* keep content away from left divider */
+  padding-right: 24px;  
+  background: transparent;
+}
+
+/* Top search */
+.allshares .search-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: #fff;
+  color: var(--tf-text);
+  outline: none;
+  box-shadow: none;
+}
+
+/* expanded single-column list */
+.allshares .expanded-list { width: 100%; box-sizing: border-box; }
+
+/* Each big row: card-style */
+.allshares .share-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--card-shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+.allshares .share-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(14,30,37,0.08);
+  background: #fbfdff;
+}
+
+/* left block: stock name */
+.allshares .share-left {
+  min-width: 220px;
+  max-width: 36%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.allshares .share-name {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--tf-text);
+  font-size: 15px;
+}
+.allshares .share-sub {
+  font-size: 12px;
+  color: var(--tf-muted);
+}
+
+/* middle price + percent */
+.allshares .share-middle {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.allshares .price-and-change {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.allshares .share-price {
+  font-size: 14px;
+  color: var(--tf-text);
+  font-weight: 700;
+}
+
+/* percent + arrow next to price */
+.allshares .share-change {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.allshares .share-change.up { color: #16a34a; }
+.allshares .share-change.down { color: #dc2626; }
+.allshares .percent-text { margin-left: 2px; font-weight:700; }
+
+/* right side: actions */
+.allshares .share-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 260px;
+  justify-content: flex-end;
+}
+
+/* row actions (buttons) */
+.allshares .row-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* button base style */
+.allshares .btn {
+  min-width: 56px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 100ms ease, box-shadow 120ms ease, background 120ms ease;
+  box-shadow: 0 8px 18px rgba(14,30,37,0.06);
+}
+
+/* primary Buy = teal */
+.allshares .btn-blue,
+.allshares .btn-buy,
+.allshares .btn-buy.small {
+  background: var(--tf-teal);
+  color: #fff;
+  border: 0;
+}
+.allshares .btn-blue:hover,
+.allshares .btn-buy:hover { background: var(--tf-teal-dark); transform: translateY(-2px); }
+
+/* Sell = amber */
+.allshares .btn-orange,
+.allshares .btn-sell,
+.allshares .btn-sell.small {
+  background: var(--tf-amber);
+  color: #fff;
+  border: 0;
+}
+.allshares .btn-orange:hover,
+.allshares .btn-sell:hover { background: var(--tf-amber-dark); transform: translateY(-2px); }
+
+/* Added / Add = neutral */
+.allshares .btn-add,
+.allshares .btn-added,
+.allshares .added-pill {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  border: 1px solid #eef1f4;
+  border-radius: 10px;
+  padding: 7px 12px;
+}
+.allshares .btn-add:hover, .allshares .btn-added:hover {
+  background: #eceff3;
+  transform: translateY(-1px);
+}
+
+/* light action icon button (trash etc) */
+.allshares .btn-light {
+  background: transparent;
+  color: var(--tf-muted);
+  border-radius: 8px;
+  padding: 6px 8px;
+  border: 0;
+}
+
+/* small size helpers */
+.allshares .btn.small { padding: 6px 10px; min-width: 44px; border-radius: 8px; font-size: 12px; }
+
+/* added-pill - pill appearance */
+.allshares .added-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+/* accessibility / keyboard focus */
+.allshares .btn:focus {
+  outline: 3px solid rgba(13,148,136,0.14);
+  outline-offset: 2px;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .allshares { padding-left: 12px; padding-right: 12px; }
+  .allshares .share-left { max-width: 45%; min-width: 140px; }
+  .allshares .share-right { min-width: 160px; gap: 10px; }
+  .allshares .btn { padding: 6px 10px; min-width: 44px; font-size: 12px; }
+  .allshares .share-row { padding: 12px; }
+}
+
+/* Small helper: ensure donut legend below left watchlist doesn't overlap */
+.allshares .donut-legend {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--tf-muted);
+}
+
+/* final minor spacing */
+.allshares .share-row + .share-row { margin-top: 6px; }
