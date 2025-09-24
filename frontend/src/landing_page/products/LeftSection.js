@@ -13,20 +13,23 @@ export default function LeftSection() {
       </p>
 
       <div style={{ marginTop: 24, display: "flex", gap: 12, alignItems: "center" }}>
-        <a href="/signup" style={{
-          backgroundColor: "#0D9488",
-          color: "#fff",
-          fontSize: "1rem",
-          fontWeight: 600,
-          padding: "12px 24px",
-          borderRadius: "8px",
-          border: "none",
-          cursor: "pointer",
-          boxShadow: "0 4px 10px rgba(13, 148, 136, 0.3)",
-          textDecoration: "none"
-        }}>
-          Open an account
-        </a>
+        import { Link } from "react-router-dom";
+
+<Link
+  to="/signup"
+  style={{
+    backgroundColor: "#0D9488",
+    color: "#fff",
+    fontSize: "1rem",
+    fontWeight: 600,
+    padding: "12px 24px",
+    borderRadius: "8px",
+    textDecoration: "none"
+  }}
+>
+  Open an account
+</Link>
+
 
         <a href="#" onClick={(e) => { e.preventDefault(); window.location.hash = "#learn"; }} style={{
           color: "#0D9488",

@@ -11,7 +11,13 @@ function Hero() {
         </h3>
         <p className="mt-3 mb-5">
           Check out our{" "}
-          <a href="/signup" style={{ textDecoration: "none" }}>
+          import { Link } from "react-router-dom";
+
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            investment offerings{" "}
+            <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+          </Link>
+
             investment offerings{" "}
             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
           </a>
