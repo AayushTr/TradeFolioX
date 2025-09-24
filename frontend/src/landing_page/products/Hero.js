@@ -20,7 +20,7 @@ function Hero() {
 
             investment offerings{" "}
             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-          </a>
+          
         </p>
       </div>
     </div>
