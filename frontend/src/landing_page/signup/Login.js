@@ -19,7 +19,9 @@ export default function Login() {
       await client.post("/auth/login", form);
 
       // ✅ redirect to dashboard app (port 3002)
-      window.location.href = "http://localhost:3002/dashboard";
+      const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || 'http://localhost:3002';
+      window.location.href = `${dashboardUrl}/dashboard`;
+
     } catch (err) {
       setError(err.response?.data?.msg || "Error logging in");
     } finally {

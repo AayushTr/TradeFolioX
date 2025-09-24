@@ -9,8 +9,9 @@ export default function PrivateRoute({ children }) {
   if (user === undefined) return <div>Loading...</div>;
 
   if (user === null) {
-    // go to landing login (hard redirect)
-    window.location.href = 'http://localhost:3001/login';
+    const landingUrl = process.env.REACT_APP_LANDING_URL || 'http://localhost:3001';
+    window.location.href = `${landingUrl}/login`;
+
     return null;
   }
 
