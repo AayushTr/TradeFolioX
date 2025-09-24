@@ -123,20 +123,22 @@ export default function ProductsPage() {
             Start a free account and get your dashboard set up in minutes.
           </p>
         </div>
-        <a
-          href="/signup"
-          style={{
-            backgroundColor: "#0D9488",
-            color: "#fff",
-            padding: "12px 26px",
-            borderRadius: 10,
-            fontWeight: 700,
-            boxShadow: "0 8px 20px rgba(13,148,136,0.2)",
-            textDecoration: "none",
-          }}
-        >
-          Open an account
-        </a>
+
+<Link
+  to="/signup"
+  style={{
+    backgroundColor: "#0D9488",
+    color: "#fff",
+    padding: "12px 26px",
+    borderRadius: 10,
+    fontWeight: 700,
+    boxShadow: "0 8px 20px rgba(13,148,136,0.2)",
+    textDecoration: "none",
+  }}
+>
+  Open an account
+</Link>
+
       </section>
     </main>
   );

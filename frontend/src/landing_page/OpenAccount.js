@@ -1,5 +1,5 @@
-// OpenAccount.js
 import React from "react";
+import { Link } from "react-router-dom";
 import "./OpenAccount.css";
 
 export default function OpenAccount() {
@@ -11,11 +11,17 @@ export default function OpenAccount() {
           <p className="openaccount-sub">
             Quick onboarding, flat pricing, and access to powerful tools — get started in minutes.
           </p>
-          <a href="/signup" className="btn openaccount-cta">Sign up Now</a>
+          <Link to="/signup" className="btn openaccount-cta">
+            Sign up Now
+          </Link>
         </div>
 
         <div className="openaccount-right" aria-hidden="true">
-          <img src="media/images/openaccount.png" alt="Open account illustration" className="openaccount-illu" />
+          <img
+            src="media/images/openaccount.png"
+            alt="Open account illustration"
+            className="openaccount-illu"
+          />
         </div>
       </div>
     </section>

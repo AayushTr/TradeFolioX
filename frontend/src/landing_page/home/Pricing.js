@@ -1,6 +1,8 @@
 // Pricing.js
 import React from "react";
 import "./Pricing.css";
+import { Link } from "react-router-dom";
+
 
 export default function Pricing() {
   return (
@@ -16,9 +18,11 @@ export default function Pricing() {
               and passes the savings to you.
             </p>
 
-            <a className="pricing-link" href="/pricing" aria-label="See pricing details">
-              See Pricing →
-            </a>
+
+<Link className="pricing-link" to="/pricing" aria-label="See pricing details">
+  See Pricing →
+</Link>
+
           </div>
 
           {/* Right: illustration */}

@@ -1,6 +1,8 @@
 // Team.js
 import React from "react";
 import "./Team.css";
+import { Link } from "react-router-dom";
+
 
 /**
  * Single-founder team section for TradeFoliox
@@ -44,10 +46,12 @@ export default function Team() {
               the ground up for long-term investors and traders alike.
             </p>
 
+
             <div className="founder-links">
-              <a href="/about" className="link-inline">About</a>
-              <a href="/contact" className="link-inline">Contact</a>
+              <Link to="/about" className="link-inline">About</Link>
+              <Link to="/contact" className="link-inline">Contact</Link>
             </div>
+
           </div>
         </div>
       </div>

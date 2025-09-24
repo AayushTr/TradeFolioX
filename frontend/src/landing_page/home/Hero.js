@@ -1,5 +1,7 @@
 // src/components/Hero.js
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Hero() {
   return (
@@ -47,8 +49,8 @@ export default function Hero() {
           </p>
 
 
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             style={{
               backgroundColor: "#0D9488",
               color: "#ffffff",
@@ -71,7 +73,7 @@ export default function Hero() {
             }}
           >
             Open an account
-        </a>
+        </Link>
 
         </div>
 
