@@ -1,3 +1,4 @@
+// Hero.js
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -9,18 +10,13 @@ function Hero() {
         <h3 className="text-muted mt-3 fs-4">
           Sleek, modern and intuitive trading platforms
         </h3>
+
         <p className="mt-3 mb-5">
           Check out our{" "}
-          import { Link } from "react-router-dom";
-
           <Link to="/signup" style={{ textDecoration: "none" }}>
             investment offerings{" "}
-            <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <i className="fa fa-long-arrow-right" aria-hidden="true" />
           </Link>
-
-            investment offerings{" "}
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-          
         </p>
       </div>
     </div>

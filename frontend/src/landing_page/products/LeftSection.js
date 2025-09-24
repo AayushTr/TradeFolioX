@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 export default function LeftSection() {
   return (
     <div style={{ flex: 1, maxWidth: 640 }}>
@@ -15,29 +14,30 @@ export default function LeftSection() {
       </p>
 
       <div style={{ marginTop: 24, display: "flex", gap: 12, alignItems: "center" }}>
-        import { Link } from "react-router-dom";
+        <Link
+          to="/signup"
+          style={{
+            backgroundColor: "#0D9488",
+            color: "#fff",
+            fontSize: "1rem",
+            fontWeight: 600,
+            padding: "12px 24px",
+            borderRadius: "8px",
+            textDecoration: "none"
+          }}
+        >
+          Open an account
+        </Link>
 
-<Link
-  to="/signup"
-  style={{
-    backgroundColor: "#0D9488",
-    color: "#fff",
-    fontSize: "1rem",
-    fontWeight: 600,
-    padding: "12px 24px",
-    borderRadius: "8px",
-    textDecoration: "none"
-  }}
->
-  Open an account
-</Link>
-
-
-        <a href="#" onClick={(e) => { e.preventDefault(); window.location.hash = "#learn"; }} style={{
-          color: "#0D9488",
-          fontWeight: 600,
-          textDecoration: "none"
-        }}>
+        <a
+          href="#learn"
+          onClick={(e) => { e.preventDefault(); window.location.hash = "#learn"; }}
+          style={{
+            color: "#0D9488",
+            fontWeight: 600,
+            textDecoration: "none"
+          }}
+        >
           Learn more →
         </a>
       </div>
