@@ -3,10 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../model/UserModel');
 
+// Cookie options: SameSite=None and Secure are required for cross-site cookies
+// (frontend and backend on different domains). Secure must be true in production (HTTPS).
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'lax',
+  sameSite: 'none',
   maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
 };
 
@@ -67,6 +69,11 @@ exports.me = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  res.clearCookie('token', { sameSite: 'lax', secure: process.env.NODE_ENV === 'production' });
+  // Clear cookie using same attributes (SameSite=None; Secure when in production)
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: process.env.NODE_ENV === 'production'
+  });
   return res.json({ msg: 'Logged out' });
 };
