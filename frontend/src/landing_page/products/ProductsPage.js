@@ -3,6 +3,8 @@ import React from "react";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import Universe from "./Universe";
+import { Link } from "react-router-dom";
+
 
 export default function ProductsPage() {
   return (
