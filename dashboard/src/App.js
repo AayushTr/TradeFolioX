@@ -3,6 +3,8 @@ import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './auth/PrivateRoute';
 import Dashboard from './components/Dashboard';
+import AuthCallback from "./auth/AuthCallback"; // adjust path
+
 
 export default function App() {
   return (
@@ -18,6 +20,7 @@ export default function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/auth/callback" element={<AuthCallback />} />
 
         <Route path="*" element={<div>404 - Not Found</div>} />
       </Routes>

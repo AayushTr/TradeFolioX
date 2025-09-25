@@ -6,6 +6,14 @@ import { AuthProvider } from './auth/useAuth';
 import { GeneralContextProvider } from './components/GeneralContext'; // <-- correct path
 import './index.css';
 
+import client from "./api/client"; // adjust path
+
+const token = localStorage.getItem("tf_token");
+if (token) {
+  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+
+
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
