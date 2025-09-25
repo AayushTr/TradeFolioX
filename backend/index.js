@@ -16,28 +16,39 @@ app.use(helmet()); // optional: basic security headers
 app.use(express.json());
 app.use(cookieParser());
 
-// allow both landing + dashboard during dev/prod via env
-const CLIENT_URLS = [
+// Build allowed origins from env (must be exact, include protocol)
+const allowedOrigins = [
   process.env.LANDING_URL || 'http://localhost:3001',
   process.env.DASHBOARD_URL || 'http://localhost:3002'
 ];
 
-// Use a function for origin so we can check allowed list dynamically
+// CORS: allow requests from allowedOrigins and enable credentials (cookies)
 app.use(cors({
   origin: function(origin, callback) {
-    // allow requests with no origin (like mobile apps, curl, server-to-server)
+    // allow requests with no origin (like Postman, curl, mobile apps)
     if (!origin) return callback(null, true);
 
-    if (CLIENT_URLS.includes(origin)) {
+    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      // For debugging you can log origin here:
       console.warn(`CORS blocked origin: ${origin}`);
       return callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true
+  credentials: true // <-- important so browser will accept cookies
 }));
+
+// Optional debug middleware: set DEBUG_AUTH=true in environment to log origin/cookie on each request
+if (process.env.DEBUG_AUTH === 'true') {
+  app.use((req, res, next) => {
+    console.log('--- DEBUG_AUTH ---');
+    console.log('Request URL:', req.originalUrl);
+    console.log('Origin header:', req.headers.origin);
+    console.log('Cookie header:', req.headers.cookie);
+    console.log('-------------------');
+    next();
+  });
+}
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {

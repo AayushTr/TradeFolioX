@@ -11,7 +11,8 @@ const cookieOptions = {
   httpOnly: true,
   sameSite: "none", // required for cross-site cookies
   secure: process.env.NODE_ENV === "production", // only send over HTTPS in production
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+  path: "/" // 7 days
 };
 
 exports.register = async (req, res) => {
