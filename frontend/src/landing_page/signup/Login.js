@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import client from "../../api/client"; // ✅ axios instance
+import client from "../../api/client";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -14,22 +14,32 @@ export default function Login() {
   const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    try {
-      setBusy(true);
+    setBusy(true);
 
-      // call backend login API
+    try {
+      // call backend login API (expects { token, user } in response)
       const res = await client.post("/auth/login", form);
 
-      // store fallback token if backend includes it (optional for landing)
-      if (res.data?.token) {
-        try { localStorage.setItem("tf_token", res.data.token); } catch (err) { /* ignore */ }
+      const token = res.data?.token;
+      if (!token) {
+        // If backend didn't return a token (unexpected), fall back to cookie-only redirect
+        const dashboardUrlFallback = process.env.REACT_APP_DASHBOARD_URL || "https://tradefolioxdash.onrender.com";
+        window.location.href = `${dashboardUrlFallback}/#/dashboard`;
+        return;
       }
 
-      // Redirect to dashboard callback with token in fragment (not sent to server)
+      // Optional: store a fallback copy on the landing origin (not used by dashboard)
+      try {
+        localStorage.setItem("tf_token", token);
+      } catch (err) {
+        // ignore storage errors (e.g., private mode)
+      }
+
+      // ALWAYS use fragment handoff so dashboard (its own origin) receives the token reliably across browsers
       const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradefolioxdash.onrender.com";
-      const token = encodeURIComponent(res.data?.token || "");
-      // NOTE: we send the token inside the fragment (#) so it will not be sent to any server.
-      window.location.href = `${dashboardUrl}/#/auth/callback?token=${token}`;
+      const encoded = encodeURIComponent(token);
+      // token placed in fragment (after #) — NOT sent to any server
+      window.location.href = `${dashboardUrl}/#/auth/callback?token=${encoded}`;
     } catch (err) {
       setError(err.response?.data?.msg || "Error logging in");
     } finally {
