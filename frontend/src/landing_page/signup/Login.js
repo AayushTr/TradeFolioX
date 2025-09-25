@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import client from "../../api/client"; // ✅ same client import you used before
+import client from "../../api/client"; // ✅ axios instance
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -15,13 +15,19 @@ export default function Login() {
     setError("");
     try {
       setBusy(true);
+
       // ✅ call backend login API
-      await client.post("/auth/login", form);
+      const res = await client.post("/auth/login", form);
 
-      // ✅ redirect to dashboard app (port 3002)
-      const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || 'http://localhost:3002';
-      window.location.href = `${dashboardUrl}/#dashboard`;
+      // ✅ store fallback token if backend includes it
+      if (res.data?.token) {
+        localStorage.setItem("tf_token", res.data.token);
+      }
 
+      // ✅ redirect to dashboard app (hash route!)
+      const dashboardUrl =
+        process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3002";
+      window.location.href = `${dashboardUrl}/#/dashboard`;
     } catch (err) {
       setError(err.response?.data?.msg || "Error logging in");
     } finally {
