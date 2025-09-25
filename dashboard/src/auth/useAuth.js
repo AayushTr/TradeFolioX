@@ -9,30 +9,33 @@ export const useProvideAuth = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchMe = async () => {
-    try {
-      // try cookie-based request first
-      const res = await client.get("/auth/me");
-      setUser(res.data.user);
-      setLoading(false);
-      return;
-    } catch (err) {
-      // cookie flow failed — try token fallback
-      const token = localStorage.getItem("tf_token");
-      if (!token) {
-        setUser(null);
+    setLoading(true);
+
+    // always try to attach token from localStorage if present
+    const token = localStorage.getItem("tf_token");
+    if (token) {
+      client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
+    const maxAttempts = 4;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const res = await client.get("/auth/me");
+        setUser(res.data.user);
         setLoading(false);
         return;
-      }
-      try {
-        const res2 = await client.get("/auth/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setUser(res2.data.user);
-      } catch (err2) {
-        console.warn("Auth fallback failed:", err2.response?.data || err2.message);
-        setUser(null);
-      } finally {
-        setLoading(false);
+      } catch (err) {
+        console.warn(`[useAuth] /auth/me attempt ${attempt} failed`, err?.response?.status);
+
+        if (attempt === maxAttempts) {
+          // after all attempts, give up
+          setUser(null);
+          setLoading(false);
+          return;
+        }
+
+        // wait a bit before retrying (100ms, 200ms, 300ms…)
+        await new Promise((r) => setTimeout(r, 100 * attempt));
       }
     }
   };

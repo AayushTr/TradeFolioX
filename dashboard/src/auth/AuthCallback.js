@@ -1,6 +1,6 @@
 // dashboard/src/pages/AuthCallback.js
 import React, { useEffect, useState } from "react";
-import client from "../api/client"; // adjust path if necessary
+import client from "../api/client"; // adjust path if needed
 import { useNavigate } from "react-router-dom";
 
 export default function AuthCallback() {
@@ -28,41 +28,56 @@ export default function AuthCallback() {
 
         if (!token) {
           setStatus("no-token");
-          log("[AuthCallback] No token in fragment; aborting and showing login link");
+          log("[AuthCallback] No token in fragment; aborting");
           return;
         }
 
-        // Save token
         try {
           localStorage.setItem("tf_token", token);
           log("[AuthCallback] stored tf_token in localStorage", true);
         } catch (err) {
-          log("[AuthCallback] localStorage write failed", (err && err.message) || err);
+          log("[AuthCallback] localStorage write failed", err?.message || err);
         }
 
-        // expose client on window for quick debugging
-        try { window.__CLIENT__ = client; } catch(e) { /* ignore */ }
+        try { window.__CLIENT__ = client; } catch (e) {}
 
-        // Set default auth header
         client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        log("[AuthCallback] set client.defaults.headers.common.Authorization", client.defaults.headers.common["Authorization"]);
+        log("[AuthCallback] set Authorization header", client.defaults.headers.common["Authorization"]?.slice(0,20) || "set");
 
+        // Retry /auth/me with exponential backoff
+        const maxAttempts = 5;
+        let attempt = 0;
+        let lastError = null;
         setStatus("calling-me");
-        // Call /auth/me and capture complete response or error
-        try {
-          const res = await client.get("/auth/me");
-          log("[AuthCallback] /auth/me success", res.data);
-          setStatus("success");
-          // navigate only after success
-          navigate("/dashboard");
-        } catch (err) {
-          // show error details on screen
-          const resp = err?.response;
-          log("[AuthCallback] /auth/me failed status", resp?.status);
-          log("[AuthCallback] /auth/me failed data", resp?.data);
-          log("[AuthCallback] request headers sent", err?.config?.headers || client.defaults.headers.common);
-          setStatus("me-failed");
+
+        while (attempt < maxAttempts) {
+          attempt += 1;
+          log(`[AuthCallback] attempt ${attempt} / ${maxAttempts} to call /auth/me`, "");
+          try {
+            const res = await client.get("/auth/me");
+            log("[AuthCallback] /auth/me success", res.data);
+            setStatus("success");
+            // navigate only after success
+            navigate("/dashboard");
+            return;
+          } catch (err) {
+            lastError = err;
+            const statusCode = err?.response?.status;
+            log(`[AuthCallback] /auth/me attempt ${attempt} failed status`, statusCode);
+            log(`[AuthCallback] /auth/me attempt ${attempt} data`, err?.response?.data || err.message);
+            // if 4xx token errors like 401, we may still retry a few times in case of transient failure, but break if it's clearly invalid
+            if (statusCode === 401 && attempt >= maxAttempts) {
+              break;
+            }
+            // wait exponential backoff (100ms, 200ms, 400ms, ...)
+            const wait = 100 * Math.pow(2, attempt - 1);
+            await new Promise((r) => setTimeout(r, wait));
+          }
         }
+
+        log("[AuthCallback] all attempts failed", lastError?.response?.data || lastError?.message || lastError);
+        setStatus("me-failed");
+        // do not auto-redirect immediately — show user the log; they can retry by clicking Reload
       } catch (ex) {
         log("[AuthCallback] unexpected error", ex?.message || ex);
         setStatus("error");
@@ -76,21 +91,21 @@ export default function AuthCallback() {
       <h3>Signing you in…</h3>
       <p>Please wait — redirecting to your dashboard.</p>
 
-      <div style={{ marginTop: 24 }}>
+      <div style={{ marginTop: 16 }}>
         <strong>Status:</strong> {status}
       </div>
 
       <div style={{ marginTop: 12, fontFamily: "monospace", whiteSpace: "pre-wrap" }}>
-        Debug log:
+        <strong>Debug log:</strong>
         <div style={{ marginTop: 8 }}>
           {debug.map((d, i) => (
-            <div key={i} style={{ borderBottom: "1px solid #eee", padding: "6px 0" }}>{d}</div>
+            <div key={i} style={{ borderBottom: "1px solid #eee', padding: '6px 0" }}>{d}</div>
           ))}
         </div>
       </div>
 
       <div style={{ marginTop: 20 }}>
-        <button onClick={() => { window.location.reload(); }}>Reload</button>
+        <button onClick={() => window.location.reload()}>Reload</button>
         <button style={{ marginLeft: 8 }} onClick={() => { localStorage.removeItem("tf_token"); }}>Clear tf_token</button>
       </div>
     </div>
