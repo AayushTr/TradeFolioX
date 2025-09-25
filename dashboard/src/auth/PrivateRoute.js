@@ -1,6 +1,6 @@
 // dashboard/src/auth/PrivateRoute.js
 import React from 'react';
-import useAuth from './useAuth';
+import { useAuth } from "./useAuth";
 
 export default function PrivateRoute({ children }) {
   const { user } = useAuth();

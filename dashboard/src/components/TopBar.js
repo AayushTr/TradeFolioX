@@ -1,7 +1,7 @@
 // src/components/TopBar.js
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import useAuth from "../auth/useAuth";
+import { useAuth } from "../auth/useAuth";
 
 export default function TopBar() {
   const { user, logout } = useAuth();
