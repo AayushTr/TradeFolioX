@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     // redirect back to landing login
     const landingUrl = process.env.REACT_APP_LANDING_URL || 'http://localhost:3001';
-    window.location.href = `${landingUrl}/login`;
+    window.location.href = `${landingUrl}/#login`;
 
   };
 
