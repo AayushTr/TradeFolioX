@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const FundsSchema = new mongoose.Schema({
-  available: { type: Number, default: 100000 }, // give some starting cash
+  available: { type: Number, default: 0 }, // give some starting cash
   used: { type: Number, default: 0 }
 });
 
