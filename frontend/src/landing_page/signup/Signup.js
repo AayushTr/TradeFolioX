@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
+import client from "../../api/client"; // <- add this import
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -13,11 +14,11 @@ export default function Signup() {
     setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
   };
 
-  // validation: NO minimum password length
   const validate = () => {
     if (!form.name.trim()) return "Please enter your name.";
     if (!form.email.trim()) return "Please enter your email.";
     if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Please enter a valid email.";
+    if (!form.password) return "Please choose a password.";
     return "";
   };
 
@@ -32,16 +33,18 @@ export default function Signup() {
 
     try {
       setBusy(true);
-      // TODO: replace this with your real signup API call
-      // Example:
-      // await api.signup(form);
-      await new Promise((r) => setTimeout(r, 700)); // demo delay
-      console.log("SIGNUP payload:", form);
+      // POST to backend register endpoint
+      const res = await client.post("/auth/register", {
+        name: form.name,
+        email: form.email,
+        password: form.password
+      });
 
-      // After successful signup, redirect to login page
+      // backend sets cookie and returns user - redirect to login
       navigate("/login");
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      // show server message if present
+      setError(err.response?.data?.msg || "Something went wrong. Please try again.");
     } finally {
       setBusy(false);
     }
@@ -58,49 +61,21 @@ export default function Signup() {
 
           <label className="field">
             <span className="field-label">Full name</span>
-            <input
-              name="name"
-              value={form.name}
-              onChange={onChange}
-              className="input"
-              placeholder="Your full name"
-              aria-required="true"
-            />
+            <input name="name" value={form.name} onChange={onChange} className="input" placeholder="Your full name" />
           </label>
 
           <label className="field">
             <span className="field-label">Email</span>
-            <input
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={onChange}
-              className="input"
-              placeholder="you@example.com"
-              aria-required="true"
-            />
+            <input name="email" type="email" value={form.email} onChange={onChange} className="input" placeholder="you@example.com" />
           </label>
 
           <label className="field">
             <span className="field-label">Password</span>
-            <input
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={onChange}
-              className="input"
-              placeholder="Choose a password"
-              aria-required="true"
-            />
+            <input name="password" type="password" value={form.password} onChange={onChange} className="input" placeholder="Choose a password" />
           </label>
 
           <div className="form-row">
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={busy}
-              aria-disabled={busy}
-            >
+            <button type="submit" className="btn-primary" disabled={busy}>
               {busy ? "Creating..." : "Create account"}
             </button>
           </div>
